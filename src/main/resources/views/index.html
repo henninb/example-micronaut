@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
     <meta charset="utf-8">
-    <title>TODO</title>
+    <title>TODO List</title>
 </head>
 <body>
 <ul>
     <li th:each="data : ${dataList}">
-        <span th:text="${data.text}">テキスト</span>
+        <span th:text="${data.text}">entry</span>
         <form action="/delete" method="post">
             <input type="hidden" name="id" th:value="${data.id}">
             <button type="submit">delete</button>
@@ -15,7 +15,7 @@
     </li>
 </ul>
 <form action="/add" method="post">
-    <label for="text">add</label><input id="text" name="text">
+    <label for="text">add text: </label><input id="text" name="text">
     <button type="submit">add</button>
 </form>
 </body>

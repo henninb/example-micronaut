@@ -2,6 +2,7 @@ package example.controllers
 
 import example.domain.Todo
 import example.repositories.TodoRepository
+import example.services.TodoService
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
@@ -10,14 +11,11 @@ import jakarta.inject.Inject
 import java.net.URI
 
 @Controller
-class TodoController {
-    @Inject
-    lateinit var todoRepository: TodoRepository
-
+class TodoController(@Inject val todoService: TodoService) {
     @Get("/index")
     @View("index")
     fun index(): HttpResponse<*> {
-        val dataList = todoRepository.findAll()
+        val dataList = todoService.findAllTodos()
         return HttpResponse.ok(mapOf("dataList" to dataList))
     }
 
@@ -25,14 +23,14 @@ class TodoController {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     fun add(@Body("text") text: String): HttpResponse<*> {
         val data = Todo(0, text)
-        todoRepository.save(data)
+        todoService.save(data)
         return HttpResponse.redirect<Any>(URI.create("/index"))
     }
 
     @Post("/delete")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     fun delete(@Body("id") id: Long): HttpResponse<*> {
-        todoRepository.deleteById(id)
+        todoService.delete(id)
         return HttpResponse.redirect<Any>(URI.create("/index"))
     }
 }

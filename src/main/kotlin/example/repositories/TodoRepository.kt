@@ -1,6 +1,6 @@
-package com.example.repositories
+package example.repositories
 
-import com.example.domain.TodoEntry
+import example.domain.TodoEntry
 import io.micronaut.data.annotation.Repository
 import io.micronaut.data.repository.CrudRepository
 

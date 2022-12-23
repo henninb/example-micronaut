@@ -1,7 +1,7 @@
-package com.example.controllers
+package example.controllers
 
-import com.example.domain.TodoEntry
-import com.example.repositories.TodoRepository
+import example.domain.TodoEntry
+import example.repositories.TodoRepository
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*

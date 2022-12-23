@@ -1,4 +1,4 @@
-package com.example.domain
+package example.domain
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue

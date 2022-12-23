@@ -1,6 +1,6 @@
 package example.controllers
 
-import example.domain.TodoEntry
+import example.domain.Todo
 import example.repositories.TodoRepository
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
@@ -24,7 +24,7 @@ class TodoController {
     @Post("/add")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     fun add(@Body("text") text: String): HttpResponse<*> {
-        val data = TodoEntry(0, text)
+        val data = Todo(0, text)
         todoRepository.save(data)
         return HttpResponse.redirect<Any>(URI.create("/index"))
     }

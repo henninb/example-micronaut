@@ -31,15 +31,16 @@ dependencies {
     //hibernate
     //implementation("org.hibernate:hibernate-core:6.1.6.Final")
     //implementation("org.hibernate:hibernate-validator:8.0.0.Final")
-
-    runtimeOnly("com.h2database:h2")
+    implementation("com.h2database:h2")
+    //runtimeOnly("com.h2database:h2")
     implementation("io.micronaut:micronaut-validation")
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 }
 
 
 application {
-    mainClass.set("example.ApplicationKt")
+    //mainClass.set("example.ApplicationKt")
+    mainClass.set("example.Application")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("17")

@@ -22,8 +22,8 @@ class TodoController(@Inject val todoService: TodoService) {
     @Post("/add")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     fun add(@Body("text") text: String): HttpResponse<*> {
-        val data = Todo(0, text)
-        todoService.save(data)
+        val todo = Todo(0, text)
+        todoService.save(todo)
         return HttpResponse.redirect<Any>(URI.create("/index"))
     }
 
